@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+
+<!-- KHÓA ZOOM -->
+<meta name="viewport" content="width=400, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>Shop Proxy mduyk~</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    width: 400px;
+    overflow: hidden;
+}
+
+/* KHUNG CỐ ĐỊNH */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box {
+    background: #1e293b;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+button {
+    background: #22c55e;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* TUYẾT */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Shop Proxy mduyk~</h1>
+
+    <div class="box">
+        <h3>Proxy Ngày</h3>
+        <p>10.000đ</p>
+        <button onclick="buy('Proxy Ngày')">Mua ngay</button>
+    </div>
+
+    <div class="box">
+        <h3>Proxy Tuần</h3>
+        <p>40.000đ</p>
+        <button onclick="buy('Proxy Tuần')">Mua ngay</button>
+    </div>
+
+    <div class="box">
+        <h3>Proxy Tháng</h3>
+        <p>60.000đ</p>
+        <button onclick="buy('Proxy Tháng')">Mua ngay</button>
+    </div>
+
+    <div class="box">
+        <h3>Proxy Vĩnh viễn</h3>
+        <p>300.000đ</p>
+        <button onclick="buy('Proxy Vĩnh viễn')">Mua ngay</button>
+    </div>
+</div>
+
+<script>
+function buy(goi) {
+    window.location.href = "pay.html?goi=" + encodeURIComponent(goi);
+}
+
+setInterval(() => {
+    const s = document.createElement("div");
+    s.className = "snowflake";
+    s.innerHTML = "❄";
+
+    s.style.left = Math.random() * 400 + "px";
+    s.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 10000);
+}, 150);
+</script>
+
+</body>
+</html>
