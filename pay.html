@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+
+<!-- KHÓA ZOOM -->
+<meta name="viewport" content="width=400, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>Thanh toán</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #020617;
+    color: white;
+    margin: 0;
+    width: 400px;
+    overflow: hidden;
+}
+
+.box {
+    background: #1e293b;
+    padding: 20px;
+    width: 320px;
+    border-radius: 10px;
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    margin-top: 15px;
+    background: #22c55e;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* TUYẾT */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Thông tin thanh toán</h2>
+
+    <p><b>Gói:</b> <span id="goi"></span></p>
+
+    <p><b>STK:</b> 0588807300000</p>
+    <p><b>Chủ TK:</b> Cao Minh Duy</p>
+
+    <p><b>Nội dung CK:</b><br>
+        <span id="noidung" style="color:#22c55e;font-weight:bold;"></span>
+    </p>
+
+    <p style="color: yellow; font-weight: bold;">
+        ⚠️ Khi chuyển khoản vui lòng nhập kèm số điện thoại
+    </p>
+
+    <button onclick="paid()">Tôi đã thanh toán</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("goi").innerText = params.get("goi") || "Không rõ";
+
+document.getElementById("noidung").innerText =
+    "MDUYK" + Math.floor(100000 + Math.random() * 900000);
+
+function paid() {
+    alert("Liên hệ admin nếu quên số điện thoại: 0328033706");
+}
+
+setInterval(() => {
+    const s = document.createElement("div");
+    s.className = "snowflake";
+    s.innerHTML = "❄";
+
+    s.style.left = Math.random() * 400 + "px";
+    s.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 10000);
+}, 150);
+</script>
+
+</body>
+</html>
